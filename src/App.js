@@ -1,27 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 import {connect} from 'react-redux';
+// import Leaflet from 'leaflet';
+import MyMap from './MapComponents/Map';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.props.dispatch({type:'set_lat_lng', lat:position.coords.latitude, lng:position.coords.longitude})
+
+    })
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Welcome to PottySpot</h1>
+        <h3>Go with Confidence</h3>
+        <p>{this.props.userCoordinates.lat}, {this.props.userCoordinates.lng}</p>
+         <MyMap/>
+      </div>
+    );
+  }
 }
 
-export default connect()(App);
+const mapStateToProps = (state) => {
+  return {
+    userCoordinates: state.userCoordinates
+  }
+};
+
+export default connect(mapStateToProps)(App);
