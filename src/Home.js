@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import './App.css';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 // import Leaflet from 'leaflet';
 // import MyMap from './MapComponents/Map';
-import {Route, Switch} from 'react-router-dom';
-import Home from './Home';
-import MyMapContainer from './MapComponents/MyMapContainer'
+import {Link} from 'react-router-dom'
 
-class App extends Component {
+class Home extends Component {
 
-  // componentDidMount() {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     this.props.dispatch({type:'set_lat_lng', lat:position.coords.latitude, lng:position.coords.longitude})
-  //
-  //   })
-  // };
+  //this will grab the user's lat.lng from the browser the moment they open the application then save the coordinates to state
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.props.dispatch({type:'set_lat_lng', lat:position.coords.latitude, lng:position.coords.longitude})
+    })
+  };
 
   //this makes a POST request to my backend api and passes the user lat,lng saved in redux in order to make GET request to toilet api in the backend
   // toiletsHandler = () => {
@@ -31,7 +29,6 @@ class App extends Component {
   //   })//end of fetch
   //   .then(response => response.json())
   //   .then(toiletsData => {
-  //     console.log("are you hitting this?");
   //     this.props.dispatch({type: 'save_toilets', payload:toiletsData})
   //   })
   //   return <MyMap toilets={this.props.toilets}/>
@@ -40,10 +37,12 @@ class App extends Component {
   render() {
     return (
       <>
-        <Switch>
-          <Route path='/map' component={MyMapContainer}/>
-          <Route path='/' component={Home}/>
-        </Switch>
+        <h1>Welcome to PottySpot</h1>
+        <h3>Go with Confidence</h3>
+        <Link to='/map'>
+          <button>Show me the toilets</button>
+        </Link>
+
       </>
     );
   }
@@ -56,4 +55,7 @@ class App extends Component {
 //   }
 // };
 
-export default App;
+export default connect()(Home);
+// <button onclick={this.toiletsHandler}>Show me the toilets!</button>
+
+// <p>{this.props.userCoordinates.lat}, {this.props.userCoordinates.lng}</p>

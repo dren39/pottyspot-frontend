@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 
 const initialState = {
   userCoordinates: {
     lat: null,
     lng: null
   },
-  zoom: 18
+  zoom: 18,
+  toilets: []
 };
 
 function reducer(state = initialState, action) {
@@ -19,6 +21,8 @@ function reducer(state = initialState, action) {
       return {...state,
         userCoordinates: {lat: action.lat, lng: action.lng
         }}
+    case "save_toilets":
+      return {...state, toilets: action.payload}
     default:
       return state
   }
@@ -29,7 +33,9 @@ const store = createStore(reducer)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
   ,document.getElementById('root')
 );
