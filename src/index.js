@@ -12,7 +12,9 @@ const initialState = {
     lng: null
   },
   zoom: 18,
-  toilets: []
+  toilets: [],
+  displayModal: false,
+  toilet: []
 };
 
 function reducer(state = initialState, action) {
@@ -23,6 +25,10 @@ function reducer(state = initialState, action) {
         }}
     case "save_toilets":
       return {...state, toilets: action.payload}
+    case "toggle_modal_on":
+      return {...state, displayModal: !state.displayModal, toilet: action.payload}
+    case "toggle_modal_off":
+      return {...state, displayModal: !state.displayModal}
     default:
       return state
   }
