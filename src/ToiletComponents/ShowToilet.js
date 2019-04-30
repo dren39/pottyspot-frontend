@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Header, Icon, Modal, Form, Dropdown } from 'semantic-ui-react';
+import { Button, Header, Modal, Form, Dropdown } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
 class ShowToilet extends Component {
@@ -68,7 +68,7 @@ class ShowToilet extends Component {
     )
   };
 //-------------------------------Purhase----------------------------
-  purchaseFormHandler = () => {
+  purchaseDropHandler = () => {
     //this toggles the purchase form display
     this.setState({togglePurchaseForm: !this.state.togglePurchaseForm})
   };
@@ -76,22 +76,31 @@ class ShowToilet extends Component {
   generatePurchaseButton = () => {
     return (
       <Modal.Actions>
-        <Button type='button' inverted size='tiny' onClick={this.purchaseFormHandler}>Update</Button>
+        <Button type='button' inverted size='tiny' onClick={this.purchaseDropHandler}>Update</Button>
       </Modal.Actions>
     )
   };
 
   purchaseChangeHandler = (event) => {
-    console.log(event);
-    console.log(event.target.textContent);
+    this.setState({purchaseSelection: event.target.textContent}, () => console.log('state after setState:', this.state.purchaseSelection))
+  };
+
+  purchaseSubmitHandler = (event) => {
+    event.preventDefault();
+    let selection = null
+    this.state.purchaseSelection === "yes" ? selection = true : selection = false
+    console.log(selection);
   };
 
 
-  generatePurchaseForm = () => {
-    const purchaseOptions = [{key:"yes", text:"yes"}, {key: "no", text:"no"}];
-    console.log(purchaseOptions);
+  generatePurchaseDrop = () => {
+    const purchaseOptions = [{key:"yes", text:"yes", value:"yes"}, {key: "no", text:"no", value:"no"}];
     return (
-      <Dropdown placeholder="Enter yes or no" options={purchaseOptions} selection onChange={this.purchaseChangeHandler} value={this.state.purchaseSelection}/>
+      <>
+        <Dropdown placeholder="Enter yes or no" options={purchaseOptions} selection onChange={this.purchaseChangeHandler} /><br/>
+        <br/><Button type='button' size='tiny' onClick={this.purchaseDropHandler}>Close</Button>
+        <Button type='submit' size='tiny' onClick={this.purchaseSubmitHandler}>Submit</Button>
+      </>
     )
   };
 
@@ -111,7 +120,7 @@ class ShowToilet extends Component {
               {this.state.togglePasswordForm ? this.generatePasswordForm(): null} {/*this checks the same local state whether to generate the update password form*/}
             <br/><p>Does this store require you to purchase?: {this.props.toilet.purchase ? "Yes": "No"}</p>
               {this.state.togglePurchaseForm ? null : this.generatePurchaseButton()}
-              {this.state.togglePurchaseForm ? this.generatePurchaseForm(): null}
+              {this.state.togglePurchaseForm ? this.generatePurchaseDrop(): null}
           </Modal.Content>
         </Modal>
     )

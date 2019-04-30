@@ -3,7 +3,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import {connect} from 'react-redux';
 import L from 'leaflet';
 import ShowToilet from '../ToiletComponents/ShowToilet';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+// import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 export const pointerIcon = new L.Icon({
   //this is copied from react-leaflet to create a custom icon for the users location
@@ -61,7 +61,7 @@ class MyMap extends Component {
       //this ternary prevents the map from erroring out by checking to see if the user's lat exists, if it does then render the map and markers, if not then just displaying "loading"
       this.props.userCoordinates.lat ?
       <>
-        <Map style={{ width: '100%', height: '700px' }} center={myPosition} zoom={18}>
+        <Map style={{ width: '100%', height: '700px' }} center={myPosition} zoom={17}>
           <TileLayer
             attribution='Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a>
             &mdash; Map data
