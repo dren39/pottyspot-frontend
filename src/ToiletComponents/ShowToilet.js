@@ -37,7 +37,7 @@ class ShowToilet extends Component {
     .then(response => response.json())
     .then(updatedToilet => {
       this.setState({passwordInput: ''})
-      this.props.dispatch({type:'update_toilet_password', payload: updatedToilet})
+      this.props.dispatch({type:'update_toilet', payload: updatedToilet})
     });//end of .then
   };
 
@@ -89,7 +89,17 @@ class ShowToilet extends Component {
     event.preventDefault();
     let selection = null
     this.state.purchaseSelection === "yes" ? selection = true : selection = false
-    console.log(selection);
+    fetch(`http://localhost:4000/api/v1/toilets/${this.props.toilet.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        purchase: selection
+      })
+    })//end of fetch
+    .then(response => response.json())
+    .then(updatedToilet => this.props.dispatch({type:'update_toilet', payload: updatedToilet}));//end of .then
   };
 
 

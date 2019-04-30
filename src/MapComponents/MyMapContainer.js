@@ -1,6 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types';
-import MyMap from './Map';
+import Map from './Map';
 import {connect} from 'react-redux';
 
 
@@ -32,7 +32,7 @@ class MyMapContainer extends React.Component {
   render () {
     return (
       <div>
-        <MyMap/>
+        <Map/>
         {this.props.userCoordinates.lat && this.state.haveToiletLocations === false
           ? this.getToiletLocations()
           : null
