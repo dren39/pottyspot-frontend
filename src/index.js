@@ -21,18 +21,24 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case "set_lat_lng":
       return {...state,
-        userCoordinates: {lat: action.lat, lng: action.lng
-        }}
+        userCoordinates: {
+          lat: action.lat,
+          lng: action.lng
+        }
+      }
     case "save_toilets":
       return {...state, toilets: action.payload}
     case "toggle_modal_on":
       return {...state, displayModal: !state.displayModal, toilet: action.payload}
     case "toggle_modal_off":
       return {...state, displayModal: !state.displayModal}
+    case "update_toilet_password":
+      const filteredToilets = state.toilets.filter(toilet => toilet.id !== action.payload.id)
+      filteredToilets.push(action.payload)
+      return {...state, toilet: action.payload, toilets: filteredToilets}
     default:
       return state
   }
-
 }
 
 const store = createStore(reducer)

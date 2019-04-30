@@ -5,8 +5,13 @@ import {connect} from 'react-redux';
 
 
 class MyMapContainer extends React.Component {
-  //this will make a POST request to my toilets#create backend using the user's lat,long, saved in states, to make a GET request to the external toilet api, seed my db with the response and then return an array of those db object
-  componentDidMount() {
+
+  state = {
+    haveToiletLocations: false
+  }
+
+  getToiletLocations = () => {
+    //this method will make a POST request to the backend which will then make a GET request to the external API, seed the database, and send the db objects back
     fetch('http://localhost:4000/api/v1/toilets', {
       method: 'POST',
       headers: {
@@ -20,18 +25,25 @@ class MyMapContainer extends React.Component {
     .then(response => response.json())
     .then(toiletsData => {
       this.props.dispatch({type: 'save_toilets', payload:toiletsData})
+      this.setState({haveToiletLocations: true})
     })//end of .then
   };//end of cdm
 
   render () {
     return (
-      <MyMap/>
+      <div>
+        <MyMap/>
+        {this.props.userCoordinates.lat && this.state.haveToiletLocations === false
+          ? this.getToiletLocations()
+          : null
+        } {/*this ternary will prevent an infinite loop by allowing the function to run once then set the state to true forever and prevents the function from ever running again*/}
+      </div>
     )
   }
 }
 
-//this is grabbing data from my state
 const mapStateToProps = (state) => {
+  //this is grabbing data from my state
   return {
     userCoordinates: state.userCoordinates,
     toilets: state.toilets

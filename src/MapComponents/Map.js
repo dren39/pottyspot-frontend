@@ -5,8 +5,8 @@ import L from 'leaflet';
 import ShowToilet from '../ToiletComponents/ShowToilet';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
-//this is copied from react-leaflet to create a custom icon for the users location
 export const pointerIcon = new L.Icon({
+  //this is copied from react-leaflet to create a custom icon for the users location
   iconUrl: require('./pointerIcon.svg'),
   iconRetinaUrl: require('./pointerIcon.svg'),
   iconAnchor: [5, 55],
@@ -17,8 +17,6 @@ export const pointerIcon = new L.Icon({
   shadowAnchor: [20, 92],
 })
 
-
-
 class MyMap extends Component {
 
   state = {
@@ -26,11 +24,14 @@ class MyMap extends Component {
     toilet: null
   };
 
+  clickHandler = (toilet) => {
+    //when the details button is clicked it will fire off this method which will fire a dispatch and change the modal toggle in global state, and also set saves the clicked toilet object to global state. when the page rerenders the ternary will return true and call the Show component.
+    this.props.dispatch({type:"toggle_modal_on", payload:toilet})
+  };
 
-  //this method will iterate through the array of toilets that was retreived frm state as props and create a marker for each toilet object
   renderMarkers = () => {
+    //this method will iterate through the array of toilets that was retreived from state as props and create a marker for each toilet object.
     return this.props.toilets.map(toilet => {
-      // console.log(toilet);
         return (
           <Marker key={toilet.id} position={[toilet.lat,toilet.long]}>
             <Popup>
@@ -47,38 +48,11 @@ class MyMap extends Component {
       })//end of iterate
   };//end of method
 
-  //this method will a special marker for the user's coordinates taken from state
   renderUserMarker = () => {
+    //this method will a special marker for the user's coordinates taken from state
     const myPosition= [this.props.userCoordinates.lat, this.props.userCoordinates.lng];
     return <Marker position={myPosition} icon={pointerIcon}><Popup>You are here</Popup></Marker>
-
   };
-
-  //when the details button is clicked it will fire off this method which will fire a dispatch and change the modal toggle in global state, and also set saves the clicked toilet object to global state. when the page rerenders the ternary will return true and call the Show component.
-  clickHandler = (toilet) => {
-    // console.log("this toilet has been click",toilet);
-    this.props.dispatch({type:"toggle_modal_on", payload:toilet})
-    // console.log(this.props.displayModal);
-    // console.log(this.props.toilet)
-    // this.setState({display: !this.state.display, toilet: toilet}, ()=>console.log("what is display?", this.state.display))
-  };
-
-  // renderModal = () => {
-  //   return (
-  //     <Modal basic size='small'>
-  //       <Header icon='marker' content={this.state.toilet.name} />
-  //       <Modal.Content>
-  //         <p>Address:</p>
-  //         <p>{this.state.toilet.street}</p>
-  //         <p>{this.state.toilet.city}, {this.state.toilet.state}</p>
-  //         <br/><p>Directions: {this.state.toilet.directions}</p>
-  //         <br/><p>Comments: {this.state.toilet.comments}</p>
-  //         <br/><p>Door password: {this.state.toilet.password}</p>
-  //         <br/><p>Does this store require you to purchase?: {this.state.toilet.password ? "Yes": "No"}</p>
-  //       </Modal.Content>
-  //     </Modal>
-  //   )
-  // };
 
   render() {
     const myPosition= [this.props.userCoordinates.lat, this.props.userCoordinates.lng]; //this saves users current lat,long from redux to myPosition which is passed to center
@@ -96,7 +70,7 @@ class MyMap extends Component {
           {this.renderMarkers()}
           {this.renderUserMarker()}
         </Map>
-        {/*this checks glocal state to display the modal or not*/}
+        {/*this checks global state to display the modal or not*/}
         {this.props.displayModal ? <ShowToilet /> : null}
       </>
       : "Loading toilets"
@@ -104,8 +78,8 @@ class MyMap extends Component {
   }//end of render
 }//end of class
 
-//this is grabbing data from my state
 const mapStateToProps = (state) => {
+  //this is grabbing data from my state
   return {
     userCoordinates: state.userCoordinates,
     zoom: state.zoom,
@@ -116,6 +90,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(MyMap)
-
-
-// {this.renderMarkers()}
