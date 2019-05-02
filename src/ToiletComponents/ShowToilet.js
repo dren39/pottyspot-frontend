@@ -69,11 +69,12 @@ class ShowToilet extends Component {
   };
 //-------------------------------Purhase----------------------------
   purchaseDropHandler = () => {
-    //this toggles the purchase form display
+    //this toggles the purchase dropdown
     this.setState({togglePurchaseForm: !this.state.togglePurchaseForm})
   };
 
   generatePurchaseButton = () => {
+    //this generates a button for toggling the purchase dropdown
     return (
       <Modal.Actions>
         <Button type='button' inverted size='tiny' onClick={this.purchaseDropHandler}>Update</Button>
@@ -82,10 +83,12 @@ class ShowToilet extends Component {
   };
 
   purchaseChangeHandler = (event) => {
-    this.setState({purchaseSelection: event.target.textContent}, () => console.log('state after setState:', this.state.purchaseSelection))
+    //this saves the text of the dropdown selection to local state
+    this.setState({purchaseSelection: event.target.textContent})
   };
 
   purchaseSubmitHandler = (event) => {
+    //this makes a PATCH request to the backend to update the purchase boolean for a specific toilet
     event.preventDefault();
     let selection = null
     this.state.purchaseSelection === "yes" ? selection = true : selection = false
@@ -104,6 +107,7 @@ class ShowToilet extends Component {
 
 
   generatePurchaseDrop = () => {
+    //this generates the dropdown selections
     const purchaseOptions = [{key:"yes", text:"yes", value:"yes"}, {key: "no", text:"no", value:"no"}];
     return (
       <>
@@ -131,6 +135,13 @@ class ShowToilet extends Component {
             <br/><p>Does this store require you to purchase?: {this.props.toilet.purchase ? "Yes": "No"}</p>
               {this.state.togglePurchaseForm ? null : this.generatePurchaseButton()}
               {this.state.togglePurchaseForm ? this.generatePurchaseDrop(): null}
+              <div className="rating">
+                <span>&#x2606;</span>
+                <span>&#x2606;</span>
+                <span>&#x2606;</span>
+                <span>&#x2606;</span>
+                <span>&#x2606;</span>
+              </div>
           </Modal.Content>
         </Modal>
     )

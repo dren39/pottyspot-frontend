@@ -1,8 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
-class Signup extends React.Component {
+class Login extends React.Component {
 
   state = {
     username: '',
@@ -14,10 +14,10 @@ class Signup extends React.Component {
     this.setState({[event.target.name]: event.target.value})
   };
 
-  submitUser = (event) => {
-    //this is making a POST request to /users to create a new user and then receive back a user object with id and username, and an encoded token which is saved to localStorage
+  loginHandler= (event) => {
+    //this is making a POST request to the auth controller in the backend
     event.preventDefault();
-    fetch('http://localhost:4000/api/v1/users', {
+    fetch('http://localhost:4000/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -37,19 +37,19 @@ class Signup extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.submitUser}>
+      <form onSubmit={this.loginHandler}>
         <input type="text" name ="username" placeholder="Username" value={this.state.username} onChange ={this.changeHandler}/>
         <input type="password" name="password" placeholder="Password" value={this.state.password} onChange ={this.changeHandler}/>
-        <button type="submit">Create Account</button>
+        <button type="submit">Login</button>
       </form>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user
+//   }
+// }
 
-export default withRouter(connect(mapStateToProps)(Signup));
+export default withRouter(connect()(Login));

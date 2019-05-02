@@ -4,7 +4,9 @@ import {connect} from 'react-redux';
 // import Leaflet from 'leaflet';
 import {Route, Switch} from 'react-router-dom';
 import Home from './Home';
-import MyMapContainer from './MapComponents/MyMapContainer'
+import MyMapContainer from './MapComponents/MyMapContainer';
+import Signup from './UserComponents/Signup'
+import Login from './UserComponents/Login'
 
 class App extends Component {
 
@@ -19,6 +21,8 @@ class App extends Component {
     return (
       <>
         <Switch>
+          <Route path='/signup' component={Signup}/>
+          <Route path='/login' component={Login}/>
           <Route path='/map' component={MyMapContainer}/>
           <Route path='/' component={Home}/>
         </Switch>
