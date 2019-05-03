@@ -15,8 +15,9 @@ const initialState = {
   zoom: 18,
   toilets: [],
   displayModal: false,
-  toilet: [],
-  user: null
+  toilet: null,
+  user: null,
+  ratings: []
 };
 
 function reducer(state = initialState, action) {
@@ -40,6 +41,8 @@ function reducer(state = initialState, action) {
       return {...state, toilet: action.payload, toilets: filteredToilets}
     case "set_user":
       return {...state, user: action.payload}
+    case "save_ratings":
+      return {...state, ratings: action.payload}
     default:
       return state
   }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Button, Header, Modal, Form, Dropdown } from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import Rating from './Rating'
 
 class ShowToilet extends Component {
 
@@ -19,6 +20,8 @@ class ShowToilet extends Component {
 
   passwordFormHandler = () => {
     //this toggles the pass form display
+    // let gold = document.querySelector('.star')
+    // gold.style.color = "gold"
     this.setState({togglePasswordForm: !this.state.togglePasswordForm})
   };
 
@@ -63,7 +66,7 @@ class ShowToilet extends Component {
     //this method is called on to generate a button for toggling the password update form
     return (
       <Modal.Actions>
-        <Button type='button' inverted size='tiny' onClick={this.passwordFormHandler}>Update</Button>
+        <Button type='button'size='tiny' onClick={this.passwordFormHandler}>Update</Button>
       </Modal.Actions>
     )
   };
@@ -77,7 +80,7 @@ class ShowToilet extends Component {
     //this generates a button for toggling the purchase dropdown
     return (
       <Modal.Actions>
-        <Button type='button' inverted size='tiny' onClick={this.purchaseDropHandler}>Update</Button>
+        <Button type='button' size='tiny' onClick={this.purchaseDropHandler}>Update</Button>
       </Modal.Actions>
     )
   };
@@ -118,12 +121,23 @@ class ShowToilet extends Component {
     )
   };
 
+  sum = (total,num) => {
+    console.log(total+num);
+    return total+num;
+  };
+
+  calculateAverageRating = () => {
+    const total = this.props.ratings.reduce(this.sum,0)
+    console.log(this.props.ratings);
+  };
+
   render() {
     return (
-        <Modal open={this.state.modalOpen} onClose={this.handleClose} basic size='small'>
+        <Modal open={this.state.modalOpen} onClose={this.handleClose} size='small' closeIcon>
           {/* when the component is called the open attribute will check local state which is always true which then tells the modal to render. when the modal is closed it will fire a dispatch to toggle the modal in global state so that when the page rerenders the ternary will return false and not render the Show component and thus the modal won't render either */}
           <Header icon='marker' content={this.props.toilet.name} />
           <Modal.Content>
+            {this.calculateAverageRating()}
             <p>Address:</p>
             <p>{this.props.toilet.street}</p>
             <p>{this.props.toilet.city}, {this.props.toilet.state}</p>
@@ -135,13 +149,7 @@ class ShowToilet extends Component {
             <br/><p>Does this store require you to purchase?: {this.props.toilet.purchase ? "Yes": "No"}</p>
               {this.state.togglePurchaseForm ? null : this.generatePurchaseButton()}
               {this.state.togglePurchaseForm ? this.generatePurchaseDrop(): null}
-              <div className="rating">
-                <span>&#x2606;</span>
-                <span>&#x2606;</span>
-                <span>&#x2606;</span>
-                <span>&#x2606;</span>
-                <span>&#x2606;</span>
-              </div>
+            <Rating/>
           </Modal.Content>
         </Modal>
     )
@@ -150,7 +158,8 @@ class ShowToilet extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    toilet: state.toilet
+    toilet: state.toilet,
+    ratings: state.ratings
   }
 };
 
