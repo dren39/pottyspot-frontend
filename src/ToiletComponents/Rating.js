@@ -10,8 +10,8 @@ class Rating extends Component {
   };
 
   changeStarColor = (event) => {
-    let element = document.getElementById(event.target.id);
-    let starId = parseInt(element.id);
+    // let element = document.getElementById(event.target.id);
+    let starId = parseInt(event.target.id);
     let strId = "";
     let i = 1;
     while (i <= starId) {
@@ -42,16 +42,12 @@ class Rating extends Component {
       })
     })//end of fetch
     .then(response => response.json())
-    .then(data => {
-      data.map(ratingObject => {
-        ratingTracker.push(ratingObject.value)
-      })
+    .then(updatedToilet => {
+      this.props.dispatch({type: "update_toilet", payload: updatedToilet})
     })//end of .then
-    this.props.dispatch({type: "save_ratings", payload: ratingTracker})
   };
 
-  saveRating = (event) => {
-    console.log("I've been clicked!");
+  saveRating = () => {
     const goldStars = [];
     const stars = document.getElementsByClassName("star")
     for (let i = 0; i < stars.length; i++) {

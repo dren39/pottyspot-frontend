@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import { Button, Header, Modal, Form, Dropdown } from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import Rating from './Rating'
+import Rating from './Rating';
+import AverageRating from './AverageRating';
 
 class ShowToilet extends Component {
 
@@ -121,23 +122,13 @@ class ShowToilet extends Component {
     )
   };
 
-  sum = (total,num) => {
-    console.log(total+num);
-    return total+num;
-  };
-
-  calculateAverageRating = () => {
-    const total = this.props.ratings.reduce(this.sum,0)
-    console.log(this.props.ratings);
-  };
-
   render() {
     return (
         <Modal open={this.state.modalOpen} onClose={this.handleClose} size='small' closeIcon>
           {/* when the component is called the open attribute will check local state which is always true which then tells the modal to render. when the modal is closed it will fire a dispatch to toggle the modal in global state so that when the page rerenders the ternary will return false and not render the Show component and thus the modal won't render either */}
           <Header icon='marker' content={this.props.toilet.name} />
           <Modal.Content>
-            {this.calculateAverageRating()}
+            <AverageRating />
             <p>Address:</p>
             <p>{this.props.toilet.street}</p>
             <p>{this.props.toilet.city}, {this.props.toilet.state}</p>
