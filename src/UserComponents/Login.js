@@ -28,6 +28,7 @@ class Login extends React.Component {
     })//end of fetch
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       localStorage.setItem('token', data.token)//set local storage with the token created from the backend
       this.setState({username: '', password: ''})//set the input field back to blank
       this.props.dispatch({type: "set_user", payload: data.user})//save the returned user object to the store

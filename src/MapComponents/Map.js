@@ -60,8 +60,8 @@ class MyMap extends Component {
     return (
       //this ternary prevents the map from erroring out by checking to see if the user's lat exists, if it does then render the map and markers, if not then just displaying "loading"
       this.props.userCoordinates.lat ?
-      <>
-        <Map style={{ width: '100%', height: '700px' }} center={myPosition} zoom={17}>
+      <div>
+        <Map style={{ width: '100%', height: '700px' }}  center={myPosition} zoom={17}>
           <TileLayer
             attribution='Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a>
             &mdash; Map data
@@ -72,7 +72,7 @@ class MyMap extends Component {
         </Map>
         {/*this checks global state to display the modal or not*/}
         {this.props.displayModal ? <ShowToilet /> : null}
-      </>
+      </div>
       : "Loading toilets"
     )//end of return
   }//end of render

@@ -29,8 +29,8 @@ class Navbar extends React.Component {
     //create a link to the signup and login page
     return(
       <>
-        <a href="/signup">Signup</a>
-        <a href="/login">Login</a>
+        <a href="/signup" className="nav-links">Signup</a>
+        <a href="/login" className="nav-links">Login</a>
       </>
     )
   };
@@ -53,12 +53,10 @@ class Navbar extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1 >PottySpot</h1>
-        <h2>Go with Confidence</h2>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
+      <div id="navbar">
+
+        <a href="/home" className="nav-links">Home</a>
+
         {/*if there is a user saved in store then display a greeting, else create the signup/login links*/}
         {this.props.user ? this.generateGreeting() : this.generateSignLog()}
       </div>
@@ -73,3 +71,9 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Navbar);
+
+
+
+
+// <h1 >PottySpot</h1>
+// <h2>Go with Confidence</h2>
