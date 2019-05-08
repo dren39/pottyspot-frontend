@@ -2,7 +2,6 @@ import React from 'react'
 // import Signup from '../UserComponents/Signup'
 // import Login from '../UserComponents/Login'
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom'
 
 
 class Navbar extends React.Component {
@@ -54,11 +53,14 @@ class Navbar extends React.Component {
   render () {
     return (
       <div id="navbar">
-
-        <a href="/home" className="nav-links">Home</a>
-
-        {/*if there is a user saved in store then display a greeting, else create the signup/login links*/}
-        {this.props.user ? this.generateGreeting() : this.generateSignLog()}
+        <div>
+          <h1 id="logo" className="nav-links">PottySpot</h1>
+        </div>
+        <div id="nav-buttons">
+          <a href="/home" className="nav-links">Home</a>
+          {/*if there is a user saved in store then display a greeting, else create the signup/login links*/}
+          {this.props.user ? this.generateGreeting() : this.generateSignLog()}
+        </div>
       </div>
     )
   }

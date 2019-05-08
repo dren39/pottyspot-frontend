@@ -31,7 +31,7 @@ class MyMapContainer extends React.Component {
 
   render () {
     return (
-      <div>
+      <div id="map-container">
         <Map/>
         {this.props.userCoordinates.lat && this.state.haveToiletLocations === false
           ? this.getToiletLocations()

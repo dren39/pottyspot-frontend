@@ -37,11 +37,14 @@ class Signup extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.submitUser}>
-        <input type="text" name ="username" placeholder="Username" value={this.state.username} onChange ={this.changeHandler}/>
-        <input type="password" name="password" placeholder="Password" value={this.state.password} onChange ={this.changeHandler}/>
-        <button type="submit">Create Account</button>
-      </form>
+      <div>
+        <h2 className="slogan">Become a member of PottySpot</h2>
+        <form onSubmit={this.submitUser} className="form">
+          <input className="input" type="text" name ="username" placeholder="Username" value={this.state.username} onChange ={this.changeHandler}/>
+          <input className="input input-password" type="password" name="password" placeholder="Password" value={this.state.password} onChange ={this.changeHandler}/>
+          <button className="submit" type="submit">Create Account</button>
+        </form>
+      </div>
     )
   }
 }

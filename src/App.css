@@ -1,30 +1,102 @@
 #navbar {
-  text-align: center;
-  padding-top: 23px;
+  /* text-align: center;
+  padding-top: 23px; */
+  display: flex;
+  align-items: baseline;
 }
 
 .nav-links {
-  padding: 30px;
-  font-size: 30px;
   font-weight: bold;
-  color: #E8E8E8
+  font-size: 2.15em;
+  color: #E8E8E8;
+  font-family: 'Righteous', cursive;
+  padding: 5%;
+}
+
+#nav-buttons {
+  display: flex;
+  padding-left: 50%;
 }
 
 #toilet-button-container {
   text-align: center;
-  padding-top: 17%;
+  padding-top: 5%;
+}
+
+#logo {
+  padding: 2vw;
+  font-weight: bold;
+  font-size: 4em;
+  color: #E8E8E8;
+  font-family: 'Righteous', cursive;
+}
+
+#slogan {
+  padding-bottom: 6%;
+  font-family: 'Righteous', cursive;
+  font-size: 2.5em;
+  color: #E8E8E8;
 }
 
 #toilet-button {
-  height: 55px;
-  width: 160px;
+  height: 7vh;
+  width: 29vh;
   color: #1B8AE5;
   background-color: #E8E8E8;
-  border-radius: 30px;
+  border-radius: 2em;
   font-family: 'Righteous', cursive;
-  font-size: 17px;
-  cursor: pointer;
+  font-size: 1.3em;
+  cursor: pointer
 }
+
+#map-container {
+  padding-top: 20px;
+  text-align: -webkit-center;
+}
+
+#map {
+  width: 99%;
+  height: 610px;
+  /* position: relative; */
+  border-radius: 15px;
+  border: 3px inset rgba(0, 0, 0, 0.5);
+}
+
+.form {
+  text-align: center;
+  padding-top: 7%;
+}
+
+.slogan {
+  font-family: 'Righteous', cursive;
+  font-size: 2.5em;
+  color: #E8E8E8;
+  text-align: center;
+  padding-top: 5%;
+}
+
+
+.input {
+  height: 6vh;
+  width: 20%;
+  border-radius: 1em;
+  border: .15em solid black;
+  text-align: center;
+}
+
+.input-password {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.submit {
+  height: 5vh;
+  width: 9%;
+  border-radius: 1em;
+  border: .15em solid black;
+}
+
+
 
 .star::before {
   content: "\f005";

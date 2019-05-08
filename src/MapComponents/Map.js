@@ -61,12 +61,12 @@ class MyMap extends Component {
       //this ternary prevents the map from erroring out by checking to see if the user's lat exists, if it does then render the map and markers, if not then just displaying "loading"
       this.props.userCoordinates.lat ?
       <div>
-        <Map style={{ width: '100%', height: '700px' }}  center={myPosition} zoom={17}>
+        <Map id="map" center={myPosition} zoom={17}>
           <TileLayer
-            attribution='Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a>
+            attribution='Imagery from &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
             &mdash; Map data
             &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+            url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'/>
           {this.renderMarkers()}
           {this.renderUserMarker()}
         </Map>
