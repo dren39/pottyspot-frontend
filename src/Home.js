@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import './App.css';
 // import {connect} from 'react-redux';
 // import Leaflet from 'leaflet';
@@ -10,14 +11,15 @@ class Home extends Component {
   render() {
     return (
       <div id="toilet-button-container">
-        <h4 id="slogan">Go with Confidence</h4>
+        <p onClick={() => this.props.history.push("/map")} className="link-to" >Go with Confidence</p>
 
-        <Link to='/map'>
-          <button id="toilet-button">Show me the toilets</button>
-        </Link>
       </div>
     );
   }
 }
 
-export default Home;
+export default withRouter(Home);
+
+// <Link to='/map'>
+//   <button id="toilet-button">Show me the toilets</button>
+// </Link>

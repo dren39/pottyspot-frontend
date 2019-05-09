@@ -57,22 +57,28 @@ class Rating extends Component {
 
   saveRating = () => {
     //this function saves all the star elements who's color is gold to an array
-    const goldStars = [];
-    const stars = document.getElementsByClassName("star")
-    //return an array of elements who's className is "star" (always 5)
-    for (let i = 0; i < stars.length; i++) {
-      if (stars[i].style.color === "gold") {
-        //iterate over the stars array based on it's length and for each element who's style color is "gold" push into the goldStars array
-        goldStars.push(stars[i].style.color)
-      }
-    };
-    //save the length of the goldStars array to local state, this presents the value rated by the user, and call the createRating function
-    this.setState({rating: goldStars.length}, ()=>this.createRating())
+    if (this.props.user) {
+      const goldStars = [];
+      const stars = document.getElementsByClassName("star")
+      //return an array of elements who's className is "star" (always 5)
+      for (let i = 0; i < stars.length; i++) {
+        if (stars[i].style.color === "gold") {
+          //iterate over the stars array based on it's length and for each element who's style color is "gold" push into the goldStars array
+          goldStars.push(stars[i].style.color)
+        }
+      };
+      //save the length of the goldStars array to local state, this presents the value rated by the user, and call the createRating function
+      this.setState({rating: goldStars.length}, ()=>this.createRating())
+
+    }
+    else {
+      alert("You must be logged in to rate this toilet")
+    }
   };
 
   render () {
     return (
-      <div>
+      <div id="rate-div">
         Rate the cleanliness of this toilet<br/>
         <span id="1" className="star" onMouseEnter={this.changeStarColor} onClick={this.saveRating}/>
         <span id="2" className="star" onMouseEnter={this.changeStarColor} onClick={this.saveRating}/>

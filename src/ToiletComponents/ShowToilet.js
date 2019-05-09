@@ -55,10 +55,12 @@ class ShowToilet extends Component {
     return (
       <Form size='tiny'>
         <Form.Field>
-          <Form.Input placeholder='Enter new password' width={4} onChange={this.passwordChangeHandler} value={this.state.passwordInput}/>
+          <input placeholder='Enter new password' width={4} onChange={this.passwordChangeHandler} value={this.state.passwordInput}/>
         </Form.Field>
-        <Button type='button' size='tiny' onClick={this.passwordFormHandler}>Close</Button>
-        <Button type='submit' size='tiny' onClick={this.passwordSubmitHandler}>Submit</Button>
+        <div>
+          <Button type='button' size='tiny' onClick={this.passwordFormHandler}>Close</Button>
+          <Button type='submit' size='tiny' onClick={this.passwordSubmitHandler}>Submit</Button>
+        </div>
       </Form>
     )
   };
@@ -115,9 +117,11 @@ class ShowToilet extends Component {
     const purchaseOptions = [{key:"yes", text:"yes", value:"yes"}, {key: "no", text:"no", value:"no"}];
     return (
       <>
-        <Dropdown placeholder="Enter yes or no" options={purchaseOptions} selection onChange={this.purchaseChangeHandler} /><br/>
-        <br/><Button type='button' size='tiny' onClick={this.purchaseDropHandler}>Close</Button>
-        <Button type='submit' size='tiny' onClick={this.purchaseSubmitHandler}>Submit</Button>
+        <Dropdown placeholder="Enter yes or no" options={purchaseOptions} selection onChange={this.purchaseChangeHandler} />
+        <div id="purchase-btn-div">
+          <Button type='button' size='tiny' onClick={this.purchaseDropHandler}>Close</Button>
+          <Button type='submit' size='tiny' onClick={this.purchaseSubmitHandler}>Submit</Button>
+        </div>
       </>
     )
   };
@@ -132,9 +136,9 @@ class ShowToilet extends Component {
             <p>Address:</p>
             <p>{this.props.toilet.street}</p>
             <p>{this.props.toilet.city}, {this.props.toilet.state}</p>
-            <br/><p>Directions: {this.props.toilet.directions}</p>
-            <br/><p>Comments: {this.props.toilet.comments}</p>
-            <br/><p>Door password: {this.props.toilet.password}</p>
+            <p>Directions: {this.props.toilet.directions}</p>
+            <p>Comments: {this.props.toilet.comments}</p>
+            <p>Door password: {this.props.toilet.password}</p>
             {this.state.togglePasswordForm ? null : this.generatePasswordButton()} {/*this ternary checks local state whether to generate a button for generating the update pass word form*/}
               {this.state.togglePasswordForm ? this.generatePasswordForm(): null} {/*this checks the same local state whether to generate the update password form*/}
             <br/><p>Does this store require you to purchase?: {this.props.toilet.purchase ? "Yes": "No"}</p>

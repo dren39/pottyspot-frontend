@@ -73,7 +73,11 @@ class MyMap extends Component {
         {/*this checks global state to display the modal or not*/}
         {this.props.displayModal ? <ShowToilet /> : null}
       </div>
-      : "Loading toilets"
+      :
+      <div>
+        <h1 className="slogan">Loading Map</h1>
+        <div className="loader"/>
+      </div>
     )//end of return
   }//end of render
 }//end of class

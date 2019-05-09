@@ -1,8 +1,9 @@
 import React from 'react'
 // import Signup from '../UserComponents/Signup'
 // import Login from '../UserComponents/Login'
+import toiletSign from "../toilet-logo.png"
 import {connect} from 'react-redux';
-
+import {withRouter} from 'react-router-dom';
 
 class Navbar extends React.Component {
 
@@ -27,10 +28,10 @@ class Navbar extends React.Component {
   generateSignLog = () => {
     //create a link to the signup and login page
     return(
-      <>
-        <a href="/signup" className="nav-links">Signup</a>
-        <a href="/login" className="nav-links">Login</a>
-      </>
+      <div id="sign-div">
+        <p onClick={() => this.props.history.push("/signup")} className="link-to" id="signup-link-id">Signup</p>
+        <p onClick={() => this.props.history.push("/login")} className="link-to">Login</p>
+      </div>
     )
   };
 
@@ -43,21 +44,22 @@ class Navbar extends React.Component {
   generateGreeting = () => {
     //if user is logged in then display a greeting and a logout button
     return (
-      <>
-        <h3>Hi, {this.props.user.username}</h3>
-        <button onClick={this.logoutHandler}>Logout</button>
-      </>
+      <div id="greeting-div">
+        <h3 id="greeting-header">Hi, {this.props.user.username}</h3>
+        <button id="logout-btn" onClick={this.logoutHandler}>Logout</button>
+      </div>
     )
   }
 
   render () {
     return (
       <div id="navbar">
-        <div>
-          <h1 id="logo" className="nav-links">PottySpot</h1>
+        <div id="logo-div">
+          <img id="logo-image" src={toiletSign} alt=""/>
+          <h1 id="logo">PottySpot</h1>
         </div>
         <div id="nav-buttons">
-          <a href="/home" className="nav-links">Home</a>
+          <p onClick={() => this.props.history.push("/home")} className="link-to">Home</p>
           {/*if there is a user saved in store then display a greeting, else create the signup/login links*/}
           {this.props.user ? this.generateGreeting() : this.generateSignLog()}
         </div>
@@ -72,7 +74,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default withRouter(connect(mapStateToProps)(Navbar));
 
 
 

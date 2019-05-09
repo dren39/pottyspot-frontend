@@ -20,6 +20,7 @@ class AverageRating extends React.Component {
         <span id="8" className="average-star" />
         <span id="9" className="average-star" />
         <span id="10" className="average-star" />
+        <span>{this.state.average}/{this.state.averageLength}</span>
       </div>
     )
   }
