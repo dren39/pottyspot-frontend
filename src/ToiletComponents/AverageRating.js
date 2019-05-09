@@ -15,12 +15,18 @@ class AverageRating extends React.Component {
   createStars = () => {
     return (
       <div>
-        <span id="6" className="average-star" />
-        <span id="7" className="average-star" />
-        <span id="8" className="average-star" />
-        <span id="9" className="average-star" />
-        <span id="10" className="average-star" />
-        <span>{this.state.average}/{this.state.averageLength}</span>
+        <div id="average-star-display">
+          <span id="6" className="average-star" />
+          <span id="7" className="average-star" />
+          <span id="8" className="average-star" />
+          <span id="9" className="average-star" />
+          <span id="10" className="average-star" />
+          <p>{this.props.averageLength} reviews</p>
+        </div>
+        <div>
+          <p>{this.props.average ? this.props.average:0}/5</p>
+          {console.log(this.props.average)}
+        </div>
       </div>
     )
   }
@@ -66,9 +72,10 @@ class AverageRating extends React.Component {
     //roundAverage rounds the average down to the nearest integer
     const adjustedAverage = roundAverage + 5
     //adjustedAverage is roundAverage plus 5, this is because elements can't have the same id(1-5) so the stars in this component were given (5-10)
-    this.changeStarColor(adjustedAverage)
     //call changeStarColor function and pass in the adjustedAverage to grab the corresponding star element
     // this.setState({average: average, averageLength: ratings.length}, ()=>this.changeStarColor(adjustedAverage))
+    this.props.dispatch({type: "save_average", average: average, averageLength: ratings.length}, this.changeStarColor(adjustedAverage))
+
   };
 
   componentDidUpdate = (prevProp) => {
@@ -90,7 +97,9 @@ class AverageRating extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    toilet: state.toilet
+    toilet: state.toilet,
+    average: state.average,
+    averageLength: state.averageLength
   }
 };
 

@@ -17,7 +17,9 @@ const initialState = {
   displayModal: false,
   toilet: null,
   user: null,
-  ratings: []
+  ratings: [],
+  average: 0,
+  averageLength: 0
 };
 
 function reducer(state = initialState, action) {
@@ -43,6 +45,8 @@ function reducer(state = initialState, action) {
       return {...state, user: action.payload}
     case "save_ratings":
       return {...state, ratings: action.payload}
+    case "save_average":
+      return {...state, average: action.average, averageLength: action.averageLength}
     default:
       return state
   }

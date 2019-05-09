@@ -128,7 +128,7 @@ class ShowToilet extends Component {
 
   render() {
     return (
-        <Modal open={this.state.modalOpen} onClose={this.handleClose} size='small' closeIcon>
+        <Modal open={this.state.modalOpen} onClose={this.handleClose} size='small' closeIcon className="show-card-animation">
           {/* when the component is called the open attribute will check local state which is always true which then tells the modal to render. when the modal is closed it will fire a dispatch to toggle the modal in global state so that when the page rerenders the ternary will return false and not render the Show component and thus the modal won't render either */}
           <Header icon='marker' content={this.props.toilet.name} />
           <Modal.Content>

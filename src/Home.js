@@ -10,7 +10,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div id="toilet-button-container">
+      <div id="toilet-button-container" className="home-animation">
         <p onClick={() => this.props.history.push("/map")} className="link-to" >Go with Confidence</p>
 
       </div>

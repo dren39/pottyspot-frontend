@@ -61,7 +61,7 @@ class MyMap extends Component {
       //this ternary prevents the map from erroring out by checking to see if the user's lat exists, if it does then render the map and markers, if not then just displaying "loading"
       this.props.userCoordinates.lat ?
       <div>
-        <Map id="map" center={myPosition} zoom={17}>
+        <Map id="map" center={myPosition} zoom={16}>
           <TileLayer
             attribution='Imagery from &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
             &mdash; Map data

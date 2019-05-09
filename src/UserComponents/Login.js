@@ -40,7 +40,7 @@ class Login extends React.Component {
     return (
       <div>
         <h2 className="slogan">Login to your account</h2>
-        <form onSubmit={this.loginHandler} className="form">
+        <form onSubmit={this.loginHandler} className="form transition-animation">
           <input className="input" type="text" name ="username" placeholder="Username" value={this.state.username} onChange ={this.changeHandler}/>
           <input className="input input-password" type="password" name="password" placeholder="Password" value={this.state.password} onChange ={this.changeHandler}/>
           <button className="submit" type="submit">Login</button>
