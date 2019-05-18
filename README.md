@@ -1,19 +1,17 @@
 README
 PottySpot is a web app designed for users on the go to be able to find restrooms around them
 
-PottySpot is built with a Rails backend using Ruby 2.6.1
-
+PottySpot is built with a React frontend using npm 6.9.0
 
 Installation Instructions:
 
 Clone this repository to your local machine and go to the file in your terminal.
 
-Run rake db:migrate
+Run npm install
 
-Run bundle install
+Run npm start
 
-Run rails s to start Rails serverD
-
+Navigate to locahost:3000/
 
 
 Licenses David Ren May 10, 2019
