@@ -21,13 +21,13 @@ class ShowToilet extends Component {
 
   passwordFormHandler = () => {
     //this toggles the pass form display
-    // let gold = document.querySelector('.star')
-    // gold.style.color = "gold"
     this.setState({togglePasswordForm: !this.state.togglePasswordForm})
   };
 
   passwordSubmitHandler = (event) => {
-    //this function makes a PATCH request to the specific toilet and updates its password in the backend and updates the toilet array with the new updated object and the single toilet in state so that the modal and map updates with the change
+    //this function makes a PATCH request to the specific toilet and updates its 
+    // password in the backend and updates the toilet array with the new updated object and 
+    // the single toilet in state so that the modal and map updates with the change
     event.preventDefault();
     fetch(`http://localhost:4000/api/v1/toilets/${this.props.toilet.id}`, {
       method: 'PATCH',
@@ -129,7 +129,10 @@ class ShowToilet extends Component {
   render() {
     return (
         <Modal open={this.state.modalOpen} onClose={this.handleClose} size='small' closeIcon className="show-card-animation">
-          {/* when the component is called the open attribute will check local state which is always true which then tells the modal to render. when the modal is closed it will fire a dispatch to toggle the modal in global state so that when the page rerenders the ternary will return false and not render the Show component and thus the modal won't render either */}
+          {/* when the component is called the open attribute will check local state which is always true 
+          which then tells the modal to render. when the modal is closed it will fire a dispatch to toggle 
+          the modal in global state so that when the page rerenders the ternary will return false and not 
+          render the Show component and thus the modal won't render either */}
           <Header icon='marker' content={this.props.toilet.name} />
           <Modal.Content>
             <AverageRating />

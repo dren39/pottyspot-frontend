@@ -33,7 +33,6 @@ class AverageRating extends React.Component {
 
   changeStarColor = (adjustedAverage) => {
     //this function changes the color of the stars
-      // let element = document.getElementById(adjustedAverage);
       let strId = "";
       let i = 6;
       while (i <= adjustedAverage) {
@@ -63,7 +62,8 @@ class AverageRating extends React.Component {
  calculateAverageRating = () => {
     const ratings = [];
     this.props.toilet.ratings.forEach(rating => {
-      //iterate over the array of rating objects in the toilet object (provided by serializer) and push the value at a key of value into the ratings array
+      //iterate over the array of rating objects in the toilet object (provided by serializer) 
+      // and push the value at a key of value into the ratings array
       ratings.push(rating.value)
     })
     const average = Math.round((ratings.reduce(this.sum,0)/ratings.length)*10)/10
@@ -71,15 +71,17 @@ class AverageRating extends React.Component {
     const roundAverage = Math.floor(average)
     //roundAverage rounds the average down to the nearest integer
     const adjustedAverage = roundAverage + 5
-    //adjustedAverage is roundAverage plus 5, this is because elements can't have the same id(1-5) so the stars in this component were given (5-10)
+    //adjustedAverage is roundAverage plus 5, this is because elements can't have the same id(1-5)
+    // so the stars in this component were given (5-10)
     //call changeStarColor function and pass in the adjustedAverage to grab the corresponding star element
-    // this.setState({average: average, averageLength: ratings.length}, ()=>this.changeStarColor(adjustedAverage))
     this.props.dispatch({type: "save_average", average: average, averageLength: ratings.length}, this.changeStarColor(adjustedAverage))
 
   };
 
   componentDidUpdate = (prevProp) => {
-    //this checks to see if the toilet from the store being passed is still the same object as the toilet in the current store, if not then run calculateAverageRating again to dynamically change the star color.
+    //this checks to see if the toilet from the store being passed is still the same object
+    // as the toilet in the current store, if not then run calculateAverageRating again to dynamically
+    // change the star color.
     if (this.props.toilet !== prevProp) {
       this.calculateAverageRating()
     }
