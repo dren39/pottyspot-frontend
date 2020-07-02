@@ -6,8 +6,6 @@
 
 /* navbar stylings */
 #navbar {
-  /* text-align: center;
-  padding-top: 23px; */
   display: flex;
   align-items: baseline;
 }
@@ -40,11 +38,6 @@
   cursor: pointer;
 }
 
-/* .links:hover {
-  color: #3E8BFF;
-  cursor: pointer;
-} */
-
 /* logo stylings */
 #logo-div {
   display: flex;
@@ -65,7 +58,6 @@
 
 /* map stylings */
 #map-container {
-  /* padding-top: 20px; */
   text-align: -webkit-center;
   -webkit-animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -89,12 +81,6 @@
 }
 
 #greeting-header {
-  /* padding-bottom: 6%;
-  font-family: 'Righteous', cursive;
-  font-size: 2em;
-  color: #E8E8E8;
-  width: 100%;
-  margin: 6px; */
   font-family: 'Righteous', cursive;
   font-size: 2em;
   color: #E8E8E8;
@@ -109,14 +95,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-top: 7%;
-  display: flex;
-  justify-content: center; */
 }
 
 #sign-div {
   display: flex;
-  /* align-items: center; */
 }
 
 #signup-link-id {
@@ -125,8 +107,6 @@
 }
 
 .input-password {
-  /* margin-right: 10px;
-  margin-left: 10px; */
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
@@ -140,10 +120,6 @@
 }
 
 .submit {
-  /* height: 5vh;
-  width: 9%;
-  border-radius: 1em;
-  border: .15em solid black; */
   border-radius: 0.6em;
   border: 0.15em solid black;
   min-height: 5vh;
@@ -159,10 +135,6 @@ color: #4482FF
 }
 
 #logout-btn {
-  /* border-radius: 0.6em;
-  border: 0.15em solid black;
-  color: white;
-  background-color: #4482FF; */
   border-radius: 0.6em;
   border: 0.15em solid black;
   color: white;
@@ -171,6 +143,7 @@ color: #4482FF
   width: 27%;
   margin-top: 5%;
 }
+
 #logout-btn:hover {
 cursor: pointer;
 background-color: Transparent;
@@ -227,23 +200,18 @@ color: #4482FF
 	animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 .star::before {
-  /* content: "\f005"; */
   content: "\f7d8";
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   font-size: 2em;
   margin-right: .5vw;
-  /* color: #f8ce0b; */
 }
 .average-star::before {
-  /* content: "\f005"; */
   content: "\f7d8";
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   font-size: 2em;
   margin-right: .5vw;
-
-  /* color: #f8ce0b; */
 }
 
 /* animations */
