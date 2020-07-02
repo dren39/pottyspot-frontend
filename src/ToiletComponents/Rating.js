@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 
-
 class Rating extends Component {
 
   state = {
     rating: null,
-    // ratingTracker: []
   };
 
   changeStarColor = (event) => {
@@ -37,7 +35,6 @@ class Rating extends Component {
 
   createRating = () => {
     //make a POST request to the Rating controller
-    // const ratingTracker = []
     fetch('http://localhost:4000/api/v1/ratings', {
       method: 'POST',
       headers: {
@@ -63,11 +60,13 @@ class Rating extends Component {
       //return an array of elements who's className is "star" (always 5)
       for (let i = 0; i < stars.length; i++) {
         if (stars[i].style.color === "gold") {
-          //iterate over the stars array based on it's length and for each element who's style color is "gold" push into the goldStars array
+          //iterate over the stars array based on it's length and for each element who's style color is 
+          // "gold" push into the goldStars array
           goldStars.push(stars[i].style.color)
         }
       };
-      //save the length of the goldStars array to local state, this presents the value rated by the user, and call the createRating function
+      //save the length of the goldStars array to local state, this presents the value rated by the user,
+      // and call the createRating function
       this.setState({rating: goldStars.length}, ()=>this.createRating())
 
     }
