@@ -3,7 +3,6 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import {connect} from 'react-redux';
 import L from 'leaflet';
 import ShowToilet from '../ToiletComponents/ShowToilet';
-// import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 export const pointerIcon = new L.Icon({
   //this is copied from react-leaflet to create a custom icon for the users location
@@ -25,12 +24,16 @@ class MyMap extends Component {
   };
 
   clickHandler = (toilet) => {
-    //when the details button is clicked it will fire off this method which will fire a dispatch and change the modal toggle in global state, and also set saves the clicked toilet object to global state. when the page rerenders the ternary will return true and call the Show component.
+    //when the details button is clicked it will fire off this method which will fire a 
+    // dispatch and change the modal toggle in global state, and also set saves the clicked 
+    // toilet object to global state. when the page rerenders the ternary will return 
+    // true and call the Show component.
     this.props.dispatch({type:"toggle_modal_on", payload:toilet})
   };
 
   renderMarkers = () => {
-    //this method will iterate through the array of toilets that was retreived from state as props and create a marker for each toilet object.
+    //this method will iterate through the array of toilets that was retreived from state as 
+    // props and create a marker for each toilet object.
     return this.props.toilets.map(toilet => {
         return (
           <Marker key={toilet.id} position={[toilet.lat,toilet.long]}>
@@ -55,10 +58,12 @@ class MyMap extends Component {
   };
 
   render() {
-    const myPosition= [this.props.userCoordinates.lat, this.props.userCoordinates.lng]; //this saves users current lat,long from redux to myPosition which is passed to center
+      //this saves users current lat,long from redux to myPosition which is passed to center
+    const myPosition= [this.props.userCoordinates.lat, this.props.userCoordinates.lng];
 
     return (
-      //this ternary prevents the map from erroring out by checking to see if the user's lat exists, if it does then render the map and markers, if not then just displaying "loading"
+      //this ternary prevents the map from erroring out by checking to see if the user's lat exists 
+      //if it does then render the map and markers, if not then just displaying "loading"
       this.props.userCoordinates.lat ?
       <div>
         <Map id="map" center={myPosition} zoom={16}>

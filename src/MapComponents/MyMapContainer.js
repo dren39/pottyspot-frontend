@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types';
 import Map from './Map';
 import {connect} from 'react-redux';
 
@@ -11,7 +10,8 @@ class MyMapContainer extends React.Component {
   }
 
   getToiletLocations = () => {
-    //this method will make a POST request to the backend which will then make a GET request to the external API, seed the database, and send the db objects back
+    //this method will make a POST request to the backend which will then make a
+    // GET request to the external API, seed the database, and send the db objects back
     fetch('http://localhost:4000/api/v1/toilets', {
       method: 'POST',
       headers: {
@@ -36,7 +36,8 @@ class MyMapContainer extends React.Component {
         {this.props.userCoordinates.lat && this.state.haveToiletLocations === false
           ? this.getToiletLocations()
           : null
-        } {/*this ternary will prevent an infinite loop by allowing the function to run once then set the state to true forever and prevents the function from ever running again*/}
+        } {/*this ternary will prevent an infinite loop by allowing the function to run 
+            once then set the state to true forever and prevents the function from ever running again*/}
       </div>
     )
   }

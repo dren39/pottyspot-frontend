@@ -1,6 +1,4 @@
 import React from 'react'
-// import Signup from '../UserComponents/Signup'
-// import Login from '../UserComponents/Login'
 import toiletSign from "../toilet-logo.png"
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
@@ -11,7 +9,8 @@ class Navbar extends React.Component {
     //on mount grab the token from local storage
     const token = localStorage.getItem("token")
     if (token) {
-      //if there was a token in local storage then make a GET request to /get_user and pass the token under the key authorization in headers
+      //if there was a token in local storage then make a GET request to /get_user and 
+      // pass the token under the key authorization in headers
       fetch('http://localhost:4000/api/v1/get_user', {
         method: 'GET',
         headers: {
@@ -75,9 +74,3 @@ const mapStateToProps = (state) => {
 }
 
 export default withRouter(connect(mapStateToProps)(Navbar));
-
-
-
-
-// <h1 >PottySpot</h1>
-// <h2>Go with Confidence</h2>
