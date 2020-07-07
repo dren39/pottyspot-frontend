@@ -12,7 +12,7 @@ class MyMapContainer extends React.Component {
   getToiletLocations = () => {
     //this method will make a POST request to the backend which will then make a
     // GET request to the external API, seed the database, and send the db objects back
-    fetch('http://localhost:4000/api/v1/toilets', {
+    fetch('https://peaceful-gunnison-63654.herokuapp.com/api/v1/toilets', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

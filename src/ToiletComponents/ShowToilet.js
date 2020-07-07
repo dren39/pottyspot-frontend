@@ -29,7 +29,7 @@ class ShowToilet extends Component {
     // password in the backend and updates the toilet array with the new updated object and 
     // the single toilet in state so that the modal and map updates with the change
     event.preventDefault();
-    fetch(`http://localhost:4000/api/v1/toilets/${this.props.toilet.id}`, {
+    fetch(`https://peaceful-gunnison-63654.herokuapp.com/api/v1/toilets/${this.props.toilet.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ class ShowToilet extends Component {
     event.preventDefault();
     let selection = null
     this.state.purchaseSelection === "yes" ? selection = true : selection = false
-    fetch(`http://localhost:4000/api/v1/toilets/${this.props.toilet.id}`, {
+    fetch(`https://peaceful-gunnison-63654.herokuapp.com/api/v1/toilets/${this.props.toilet.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

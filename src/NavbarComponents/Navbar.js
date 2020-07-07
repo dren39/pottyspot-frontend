@@ -11,7 +11,7 @@ class Navbar extends React.Component {
     if (token) {
       //if there was a token in local storage then make a GET request to /get_user and 
       // pass the token under the key authorization in headers
-      fetch('http://localhost:4000/api/v1/get_user', {
+      fetch('https://peaceful-gunnison-63654.herokuapp.com/api/v1/get_user', {
         method: 'GET',
         headers: {
           Authorization: token

@@ -18,7 +18,7 @@ class Signup extends React.Component {
     //this is making a POST request to /users to create a new user and then receive back a user 
     // object with id and username, and an encoded token which is saved to localStorage
     event.preventDefault();
-    fetch('http://localhost:4000/api/v1/users', {
+    fetch('https://peaceful-gunnison-63654.herokuapp.com/api/v1/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -17,7 +17,7 @@ class Login extends React.Component {
   loginHandler= (event) => {
     //this is making a POST request to the auth controller in the backend
     event.preventDefault();
-    fetch('http://localhost:4000/api/v1/login', {
+    fetch('https://peaceful-gunnison-63654.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

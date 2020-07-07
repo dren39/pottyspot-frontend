@@ -35,7 +35,7 @@ class Rating extends Component {
 
   createRating = () => {
     //make a POST request to the Rating controller
-    fetch('http://localhost:4000/api/v1/ratings', {
+    fetch('https://peaceful-gunnison-63654.herokuapp.com/api/v1/ratings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
