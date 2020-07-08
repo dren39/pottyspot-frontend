@@ -10,6 +10,7 @@ Run `npm install` to install the required dependencies.\
 Run `npm start` to start up the React application.
 
 Your default browser should automatically open up to the React application once the application has started up,\
-but you can also manually navigate to it in your browser by going to https://locahost:3000/.
+but you can also manually navigate to it in your browser by going to https://locahost:3000/.\
+A working demo of the app can be used [here](https://quiet-beyond-26673.herokuapp.com/).
 
 PottySpot is powered by [REFUGE Restroom API](https://www.refugerestrooms.org/api/docs/).
