@@ -1,9 +1,9 @@
-##Introduction:
+## Introduction:
 
 PottySpot is a web app designed for users on the go to be able to find restrooms around them.\
 PottySpot is built with a React frontend using npm 6.9.0.
 
-##Installation:
+## Installation:
 
 Clone this repository to your local machine and navigate to the app file in your terminal.\
 Run `npm install` to install the required dependencies.\
