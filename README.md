@@ -5,6 +5,7 @@ PottySpot is built with a React frontend using npm 6.9.0.
 
 ## Installation:
 
+This application requires having Node and React installed. For best use experience please with Chrome browser.\
 Clone this repository to your local machine and navigate to the app file in your terminal.\
 Run `npm install` to install the required dependencies.\
 Run `npm start` to start up the React application.
