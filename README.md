@@ -1,6 +1,6 @@
 ## Introduction:
 
-PottySpot is a web application designed to help users on the go to be able to find restrooms nearby.
+PottySpot is a web application designed to help users on the go to be able to find restrooms nearby
 
 ## Functionality
 
